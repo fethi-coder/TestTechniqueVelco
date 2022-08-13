@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.Velco.MODEL.Errors;
 import com.Velco.MODEL.InputFile;
@@ -18,6 +19,7 @@ public class TraitementFichier {
 	
 public final static String adressFichier = "Ref_07102014.txt";
 static ArrayList<References> resultData = new ArrayList<>();
+public static List<References> goodValue = new ArrayList<>();
 
 public static Object recuperationDataFile() {
 	
@@ -30,7 +32,9 @@ public static Object recuperationDataFile() {
 		FileReader filereader = new FileReader(file);
 		BufferedReader br = new BufferedReader(filereader);
 		String line;
-	while((line = br.readLine()) != null){
+		Integer count = 1;
+	while((line = br.readLine()) != null && count > goodValue.size()){
+		count++;
 		ajouterData(resultData, line);	
 	}
 	br.close();
@@ -57,18 +61,20 @@ public static ArrayList<References> ajouterData(ArrayList<References> resultData
 //----------------------- condition de trie du fichier JSON ----------------------------//
 private static Object conditionDeTrie(ArrayList<References> resultData) {
 	InputFile globalDataTraitement = new InputFile();
-	ArrayList<References> goodValue = new ArrayList<>();
+	
+	Integer countLine = 1;
 	for (int i = 0; i < resultData.size(); i++) {
 		if (resultData.get(i).getType().equals("R") || resultData.get(i).getType().equals("G") ||  resultData.get(i).getType().equals("B")) {
 			goodValue.add(resultData.get(i));
 			globalDataTraitement.setReferences(goodValue);
 		} else{
 		Errors erreur = new Errors();
-		erreur.setLine(resultData.size());
+		erreur.setLine(countLine);
 		erreur.setMessage("Incorrect value for color");
 		erreur.setValue(resultData.get(i));
 		globalDataTraitement.setErrors(erreur);
 		}
+		countLine++;
 	}
 	return globalDataTraitement;
 }
