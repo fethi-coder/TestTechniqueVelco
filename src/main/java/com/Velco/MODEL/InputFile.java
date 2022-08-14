@@ -3,9 +3,10 @@ package com.Velco.MODEL;
 import java.util.List;
 
 public class InputFile {
-	
+
 	List<References> references;
-	Errors  errors;
+	Errors errors;
+
 	public InputFile() {
 		super();
 	}
@@ -36,7 +37,5 @@ public class InputFile {
 	public String toString() {
 		return "InputFile [references=" + references + ", errors=" + errors + "]";
 	}
-	
-
 
 }
