@@ -4,7 +4,7 @@ http://localhost:8080/velco/dataJson
 
 et pour un récupérer une valeur par size avec une variable
 
-http://localhost:8080/velco/saveDataTrie/97 <=== le 97 est à titre d'exemple
+http://localhost:8080/velco/saveDataTrie/97 <=== le 97 est à titre d'exemple mettre une valeur existante
 
 trie par prix ascendant
 
