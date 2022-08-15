@@ -17,7 +17,7 @@ public class TraitementFichier {
 	// ...traitement du fichier et construction du retour de l'appel du controller
 	// au format JSON
 
-	public final static String adressFichier = "Ref_07102014.txt";
+	public static String adressFichier = "Ref_07102014.txt";
 	public static ArrayList<References> resultData = new ArrayList<>();
 	public static List<References> goodValue = new ArrayList<>();
 
