@@ -20,12 +20,12 @@ public class TraitementFichier {
 	public static String adressFichier = "Ref_07102014.txt";
 	public static ArrayList<References> resultData = new ArrayList<>();
 	public static List<References> goodValue = new ArrayList<>();
+	public static List<References> badValue = new ArrayList<>();
 
 	public static Object recuperationDataFile() {
 
 //--------------- recuperation donnee du fichier .txt -------------------//	
 		File file = new File(adressFichier);
-		@SuppressWarnings("unused")
 		ArrayList<Object> finalData = new ArrayList<>();
 		try {
 			FileReader filereader = new FileReader(file);
@@ -47,7 +47,7 @@ public class TraitementFichier {
 		return conditionDeTrie(resultData);
 	}
 
-//------------------------ajoute des datas dans la class reference --------------------//
+//------------------------ajoute des datas dans la class references --------------------//
 	public static ArrayList<References> ajouterData(ArrayList<References> resultData, String line) {
 		String[] data = line.split(";");
 		resultData.add(new References(Integer.parseInt(data[0]), data[1], Float.parseFloat(data[2]),
@@ -60,16 +60,18 @@ public class TraitementFichier {
 		InputFile globalDataTraitement = new InputFile();
 		Integer countLine = 1;
 		goodValue.clear();
+		badValue.clear();
 		for (int i = 0; i < resultData.size(); i++) {
 			if (resultData.get(i).getType().equals("R") || resultData.get(i).getType().equals("G")
 					|| resultData.get(i).getType().equals("B")) {
 				goodValue.add(resultData.get(i));
 				globalDataTraitement.setReferences(goodValue);
 			} else {
+				badValue.add(resultData.get(i));
 				Errors erreur = new Errors();
 				erreur.setLine(countLine);
 				erreur.setMessage("Incorrect value for color");
-				erreur.setValue(resultData.get(i));
+				erreur.setValue(badValue);
 				globalDataTraitement.setErrors(erreur);
 			}
 			countLine++;

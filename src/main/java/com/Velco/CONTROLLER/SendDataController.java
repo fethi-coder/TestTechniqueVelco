@@ -2,7 +2,6 @@ package com.Velco.CONTROLLER;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -123,25 +122,25 @@ public class SendDataController {
 	}
 
 	// ------------------- trie size croissant ----------------------------//
-	@GetMapping("sizeAsc")
+	@RequestMapping("sizeAsc")
 	public List<References> trieSizeAsc() {
 		return referencesRepo.getSizeAsc();
 	}
 
 	// ------------------- trie size decroissant --------------------------//
-	@GetMapping("sizeDesc")
+	@RequestMapping("sizeDesc")
 	public List<References> trieSizeDesc() {
 		return referencesRepo.getSizeDesc();
 	}
 
 	// ------------------- trie price croissant ----------------------------//
-	@GetMapping("priceAsc")
+	@RequestMapping("priceAsc")
 	public List<References> triePriceAsc() {
 		return referencesRepo.getPriceAsc();
 	}
 
 	// ------------------- trie price decroissant ----------------------------//
-	@GetMapping("priceDesc")
+	@RequestMapping("priceDesc")
 	public List<References> triePriceDesc() {
 		return referencesRepo.getPriceDesc();
 	}

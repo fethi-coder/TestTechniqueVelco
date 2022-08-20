@@ -1,16 +1,18 @@
 package com.Velco.MODEL;
 
+import java.util.List;
+
 public class Errors {
 
 	private Integer line;
 	private String message;
-	private References value;
+	private List<References> value;
 
 	public Errors() {
 		super();
 	}
 
-	public Errors(Integer line, String message, References value) {
+	public Errors(Integer line, String message, List<References> value) {
 		super();
 		this.line = line;
 		this.message = message;
@@ -33,11 +35,11 @@ public class Errors {
 		this.message = message;
 	}
 
-	public References getValue() {
+	public List<References> getValue() {
 		return value;
 	}
 
-	public void setValue(References value) {
+	public void setValue(List<References> value) {
 		this.value = value;
 	}
 
